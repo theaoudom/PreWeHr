@@ -73,7 +73,7 @@ dependencies {
     /* Hilt */
     implementation("com.google.dagger:hilt-android:2.51")
     kapt("com.google.dagger:hilt-android-compiler:2.51")
-    implementation ("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation ("androidx.hilt:hilt-navigation-compose:1.2.0")
 
     /* okhttp3 */
     implementation ("com.squareup.okhttp3:okhttp:4.10.0")
@@ -84,13 +84,13 @@ dependencies {
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
 
     /* compose viewmodel */
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.6")
 
     /* compose livedata */
-    implementation ("androidx.compose.runtime:runtime-livedata:1.0.0-beta01")
+    implementation ("androidx.compose.runtime:runtime-livedata:1.7.3")
 
     /* navigation */
-    implementation("androidx.navigation:navigation-compose:$2.7.7")
+    implementation(libs.androidx.navigation.compose)
 
 }
 // Allow references to generated code
