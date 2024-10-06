@@ -15,8 +15,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             val navController = rememberNavController()
-            val isAuthenticated by remember { mutableStateOf(true) }
+            val isAuthenticated by remember { mutableStateOf(false) }
             AppNavigation(navController = navController, isAuthenticated = isAuthenticated)
+
 //            WeHr_ProjectTheme {
 //
 //            }

@@ -8,6 +8,9 @@ sealed class Screen(val route: String,val icon: Int? = null,val iconSelected: In
     data object Overtime : Screen("Overtime", R.drawable.overtime_icon,R.drawable.overtime_icon_selected, "Overtime")
 
     data object Login : Screen("Login")
+    data object SignUp : Screen("SignUp")
+    data object ConfirmOTP : Screen("ConfirmOTP")
+    data object Main : Screen("Main")
 }
 val bottomNavItem = listOf(
     Screen.Summary,
