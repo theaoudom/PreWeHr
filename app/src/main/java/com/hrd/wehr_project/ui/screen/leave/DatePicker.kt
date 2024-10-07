@@ -14,12 +14,12 @@ import androidx.compose.material3.DatePicker
 import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.material3.DatePickerDialog
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.hrd.wehr_project.R
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Preview
 @Composable
 fun DateRangePicker() {
     var startDateMillis by remember { mutableStateOf<Long?>(null) }
@@ -28,11 +28,12 @@ fun DateRangePicker() {
 
     Column(
         verticalArrangement = Arrangement.spacedBy(2.dp),
-       modifier = Modifier.padding(3.dp,15.dp)
+        // modifier = modifier
     ) {
         // Custom Button to display selected date range
         CustomDateRangeButton(
-                       onClick = { showDatePicker = true }
+
+            onClick = { showDatePicker = true },
         )
 
         // Show the DatePickerDialog when the button is clicked
@@ -56,7 +57,7 @@ fun DateRangePicker() {
                 }
             ) {
 
-                    DatePicker(state = datePickerState)
+                DatePicker(state = datePickerState)
 
             }
         }
@@ -64,19 +65,20 @@ fun DateRangePicker() {
 }
 
 @Composable
-fun CustomDateRangeButton( onClick: () -> Unit) {
+fun CustomDateRangeButton(onClick: () -> Unit) {
     Button(
         onClick = onClick,
         modifier = Modifier
-            .width(205.dp)
-            .height(40.dp).padding(0.dp),
-        shape = RoundedCornerShape(15.dp),
+        ,     shape = RoundedCornerShape(12.dp),
         border = BorderStroke(1.dp, color = colorResource(id = R.color.button_color)),
         colors = ButtonDefaults.buttonColors(containerColor = Color.White)
     ) {
         Text(
             text = "Jan 01, 2024 - Feb 01, 2024",
-            fontSize = 12.sp,
+            fontSize = 13.sp,
+            fontWeight = FontWeight.Medium,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.padding(15.dp,0.dp),
 
             color = colorResource(id = R.color.button_color)
         )

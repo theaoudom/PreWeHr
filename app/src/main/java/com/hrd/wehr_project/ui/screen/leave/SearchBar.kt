@@ -36,7 +36,7 @@ fun SearchBar(
                 "Search here",
                 fontWeight = FontWeight.Normal,
                 fontSize = 14.sp,
-          //      color = colorResource(id = R.color.search_text_color) // Ensure the placeholder is visible
+              // color = colorResource(id = R.color.search_text_color) // Ensure the placeholder is visible
             )
         },
         trailingIcon = {
