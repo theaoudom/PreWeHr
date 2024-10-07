@@ -8,14 +8,16 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchBar(
     modifier: Modifier = Modifier,
@@ -27,25 +29,30 @@ fun SearchBar(
         value = searchQuery.value,
         onValueChange = {
             searchQuery.value = it
-            onSearch(it.text) // Call the search function when input changes
+            onSearch(it.text)
         },
-        placeholder = { Text("Search here", fontSize = 16.sp) },
+        placeholder = {
+            Text(
+                "Search here",
+                fontWeight = FontWeight.Normal,
+                fontSize = 14.sp,
+          //      color = colorResource(id = R.color.search_text_color) // Ensure the placeholder is visible
+            )
+        },
         trailingIcon = {
             Icon(
-                Icons.Default.Search, // Replace with your search icon resource
+                Icons.Default.Search,
                 contentDescription = "Search Icon"
             )
         },
-        modifier = modifier
-            .width(320.dp)
-            .height(60.dp)
-            .padding(start = 10.dp, end = 10.dp, top = 10.dp),
-//        colors = TextFieldDefaults.textFieldColors(
-//           // focusedIndicatorColor = colorResource(id = R.color.search_bg_color), // This won't show in regular TextField
-//            unfocusedIndicatorColor = Color.LightGray, // This won't show in regular TextField
-//            containerColor = colorResource(id = R.color.search_bg_color)
-//        )
-
-        shape = RoundedCornerShape(60.dp),
+        modifier = Modifier
+            .height(50.dp) // Set fixed height
+        , colors = TextFieldDefaults.colors(
+//            unfocusedContainerColor = colorResource(id = R.color.search_bg_color),
+//            focusedIndicatorColor = colorResource(id = R.color.search_border_color),
+//            focusedContainerColor = colorResource(id = R.color.search_bg_color),
+//            unfocusedIndicatorColor = colorResource(id = R.color.search_border_color)
+        ),
+        shape = RoundedCornerShape(15.dp),
     )
 }

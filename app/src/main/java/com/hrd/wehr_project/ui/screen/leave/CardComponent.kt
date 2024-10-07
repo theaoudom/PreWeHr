@@ -38,27 +38,26 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.hrd.wehr_project.R
-
-//@Preview(showBackground = true)
 @Composable
-fun CardComponent(status:Status) {
+fun CardComponent(leaveData: LeaveData) {
 
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding( 15.dp, 5.dp)
-            .background(colorResource(id = R.color.white))
+            .padding(0.dp, 5.dp)
             .border(
                 border = BorderStroke(width = 1.dp, color = colorResource(id = R.color.border_color)),
                 shape = RoundedCornerShape(10.dp)
             )
+            .background(colorResource(id = R.color.white),shape = RoundedCornerShape(10.dp))
+        
     )
     {
-        Column(Modifier.padding(12.dp)) {
+        Column(Modifier.padding(10.dp,8.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Text("Annual Leave", color = colorResource(id = R.color.annul_leave_color), fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
+                Text(text = leaveData.leaveType, color =  getLeaveTypeColor(leaveData.leaveType), fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
                 Spacer(modifier = Modifier.weight(1f))
-                StatusFilterChip(status )
+                StatusFilterChip(leaveData.status)
             }
             Row(
                 horizontalArrangement = Arrangement.spacedBy((10.dp)),
@@ -71,7 +70,7 @@ fun CardComponent(status:Status) {
                     Modifier.size(13.dp)
                 )
                 // date
-                Text("28-07-2024 ", fontWeight = FontWeight.Medium, fontSize = 13.sp)
+                Text(leaveData.leaveDate, fontWeight = FontWeight.Medium, fontSize = 13.sp)
                 // circle
                 Icon(
                     painter = painterResource(id = R.drawable.ellipse),
@@ -83,7 +82,7 @@ fun CardComponent(status:Status) {
                 )
 
                 // Duration
-                Text("0.5 day off ", fontWeight = FontWeight.Medium, fontSize = 13.sp)
+                Text(leaveData.duration, fontWeight = FontWeight.Medium, fontSize = 13.sp)
             }
             Row(Modifier.padding(top = 10.dp),verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                 // icon edit
@@ -93,7 +92,7 @@ fun CardComponent(status:Status) {
                     Modifier.size(13.dp)
                 )
                 // reason
-                Text("Personal issue", fontWeight = FontWeight.Normal, fontSize = 12.sp)
+                Text(leaveData.reason, fontWeight = FontWeight.Normal, fontSize = 12.sp)
 
                 Spacer(modifier = Modifier.weight(1f))
 
@@ -106,25 +105,23 @@ fun CardComponent(status:Status) {
 
 
 
+data class LeaveData(
+    val status: Status,
+    val leaveType: String,
+    val leaveDate: String,
+    val duration: String,
+    val reason: String
+)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@Composable
+fun getLeaveTypeColor(leaveType: String): Color {
+    return when (leaveType) {
+        LeaveType.SickLeave -> colorResource(id = R.color.sick_leave_color)
+        LeaveType.SpecialLeave -> colorResource(id = R.color.special_leave_color)
+        LeaveType.AnnualLeave -> colorResource(id = R.color.annul_leave_color)
+        else -> Color.Black // Default color if none match
+    }
+}
 
 
 

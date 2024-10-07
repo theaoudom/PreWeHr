@@ -92,6 +92,12 @@ dependencies {
     /* navigation */
     implementation("androidx.navigation:navigation-compose:$2.7.7")
 
+
+    /* material ui */
+    implementation("androidx.compose.ui:ui:1.4.0")
+    implementation("androidx.compose.material:material:1.4.0")
+
+
 }
 // Allow references to generated code
 kapt {
