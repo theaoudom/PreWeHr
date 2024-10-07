@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
@@ -40,11 +41,12 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.hrd.wehr_project.R
 import kotlin.text.contains
-
+@Preview
 @Composable
 fun AttendanceScreen() {
 
@@ -61,7 +63,6 @@ fun AttendanceScreen() {
         SearchFilterBar(searchText) {
             searchText = it
         }
-        Spacer(modifier = Modifier.height(8.dp))
         AttendanceList(filteredAttendance)
     }
 }
@@ -83,7 +84,7 @@ fun SearchFilterBar(searchText: String, onSearchTextChanged: (String) -> Unit) {
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         OutlinedTextField(
-            modifier = Modifier.height(40.dp),
+            modifier = Modifier,
             colors = TextFieldDefaults.outlinedTextFieldColors(
                 unfocusedBorderColor = Color.Gray.copy(0.5f),
                 focusedBorderColor = Color.Gray.copy(0.5f),
@@ -101,18 +102,9 @@ fun SearchFilterBar(searchText: String, onSearchTextChanged: (String) -> Unit) {
                 )
             }
         )
-//        if (searchText.isNotEmpty()) {
-//            Icon(imageVector = Icons.Filled.Close,
-//                contentDescription = "Clear",
-//                modifier = Modifier
-//                    .padding(8.dp)
-//                    .size(24.dp)
-//                    .clickable { onSearchTextChanged("")
-//                    }
-//            )
-//        }
         Row(
-            modifier = Modifier,
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.End,
             verticalAlignment = Alignment.CenterVertically
         ) {
             Image(
@@ -153,117 +145,133 @@ fun AttendanceList(attendanceList: List<Attendance>) {
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
-                        // Left Date Card
-                        Column(
-                            modifier = Modifier.weight(1f),
-                            verticalArrangement = Arrangement.spacedBy(10.dp)
-                        ) {
-                            Text(
-                                text = attendance.aesDate,
-                                fontSize = 14.sp,
-                                fontWeight = FontWeight.Bold
-                            )
-                            Box{
-                                Row(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    horizontalArrangement = Arrangement.spacedBy(10.dp)
-                                ) {
-                                    Box(
-                                        modifier = Modifier
-                                            .background(
-                                                Color(0xFF2489FF).copy(0.16f), RoundedCornerShape(5.dp)
-                                            )
-                                            .padding(5.dp)
-                                    ) {
-                                        Image(
-                                            painter = painterResource(R.drawable.output_circle_24dp_2489ff_fill0_wght400_grad0_opsz24),
-                                            contentDescription = "check out",
-                                            Modifier.rotate(270f)
-                                        )
-                                    }
-                                    Column(
-                                        modifier = Modifier,
-                                        verticalArrangement = Arrangement.SpaceBetween
-                                    ) {
-                                        Text(
-                                            text = "06:06:43 PM",
-                                            fontSize = 12.sp,
-                                            modifier = Modifier.padding(bottom = 10.dp)
-                                        )
-                                        if (attendance.checkOut.statusName == "Miss Check-out") {
-                                            Text(
-                                                text = "Miss Check-out",
-                                                color = Color.Red,
-                                                fontSize = 10.sp
-                                            )
-                                        } else {
-                                            Text(
-                                                text = attendance.checkOut.statusName,
-                                                color = Color(0xFFFFA500),
-                                                fontSize = 10.sp
-                                            )
-                                        }
-                                    }
+                        // left check out
+                        Column {
+                            Text("Leng Socheat")
+                            Row {
+                                Image(painter = painterResource(R.drawable.output_circle_24dp_2489ff_fill0_wght400_grad0_opsz24), contentDescription = "check out")
+                                Column {
+                                    Text("Late Check-out")
+                                    Text("06:06:43 PM")
                                 }
                             }
+                        }
+                        Column {
+                            Text("Leng Sambath")
                         }
 
+
+                        // Left Date Card
+//                        Column(
+//                            modifier = Modifier.weight(1f),
+//                            verticalArrangement = Arrangement.spacedBy(8.dp)
+//                        ) {
+//                            Text(
+//                                text = attendance.aesDate,
+//                                fontSize = 14.sp,
+//                                fontWeight = FontWeight.Bold
+//                            )
+//                            Box{
+//                                Row(
+//                                    modifier = Modifier.fillMaxWidth(),
+//                                    verticalAlignment = Alignment.CenterVertically,
+//                                    horizontalArrangement = Arrangement.spacedBy(10.dp)
+//                                ) {
+//                                    Box(
+//                                        modifier = Modifier
+//                                            .background(
+//                                                Color(0xFF2489FF).copy(0.16f), RoundedCornerShape(5.dp)
+//                                            )
+//                                            .padding(5.dp)
+//                                    ) {
+//                                        Image(
+//                                            painter = painterResource(R.drawable.output_circle_24dp_2489ff_fill0_wght400_grad0_opsz24),
+//                                            contentDescription = "check out",
+//                                            Modifier.rotate(270f)
+//                                        )
+//                                    }
+//                                    Column(
+//                                        modifier = Modifier,
+//                                        verticalArrangement = Arrangement.SpaceBetween
+//                                    ) {
+//                                        Text(
+//                                            text = "06:06:43 PM",
+//                                            fontSize = 12.sp,
+//                                            modifier = Modifier.padding(bottom = 10.dp)
+//                                        )
+//                                        if (attendance.checkOut.statusName == "Miss Check-out") {
+//                                            Text(
+//                                                text = "Miss Check-out",
+//                                                color = Color.Red,
+//                                                fontSize = 10.sp
+//                                            )
+//                                        } else {
+//                                            Text(
+//                                                text = attendance.checkOut.statusName,
+//                                                color = Color(0xFFFFA500),
+//                                                fontSize = 10.sp
+//                                            )
+//                                        }
+//                                    }
+//                                }
+//                            }
+//                        }
+
                         // Right Date Card
-                        Column(
-                            modifier = Modifier.weight(1f),
-                            verticalArrangement = Arrangement.spacedBy(10.dp)
-                        ) {
-                            Text(
-                                text = attendance.aesDate,
-                                fontSize = 14.sp,
-                                fontWeight = FontWeight.Bold
-                            )
-                            Box{
-                                Row(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    horizontalArrangement = Arrangement.spacedBy(10.dp)
-                                ) {
-                                    Box(
-                                        modifier = Modifier
-                                            .background(
-                                                Color(0xFF2489FF).copy(0.16f), RoundedCornerShape(5.dp)
-                                            )
-                                            .padding(5.dp)
-                                    ) {
-                                        Image(
-                                            painter = painterResource(R.drawable.output_circle_24dp_2489ff_fill0_wght400_grad0_opsz24),
-                                            contentDescription = "check out",
-                                            Modifier.rotate(90f)
-                                        )
-                                    }
-                                    Column(
-                                        modifier = Modifier,
-                                        verticalArrangement = Arrangement.SpaceBetween
-                                    ) {
-                                        Text(
-                                            text = "06:06:43 PM",
-                                            fontSize = 12.sp,
-                                            modifier = Modifier.padding(bottom = 10.dp)
-                                        )
-                                        if (attendance.checkOut.statusName == "Miss Check-out") {
-                                            Text(
-                                                text = "Miss Check-out",
-                                                color = Color.Red,
-                                                fontSize = 10.sp
-                                            )
-                                        } else {
-                                            Text(
-                                                text = attendance.checkOut.statusName,
-                                                color = Color(0xFFFFA500),
-                                                fontSize = 10.sp
-                                            )
-                                        }
-                                    }
-                                }
-                            }
-                        }
+//                        Column(
+//                            modifier = Modifier.weight(0.6f),
+//                            verticalArrangement = Arrangement.spacedBy(10.dp)
+//                        ) {
+//                            Text(
+//                                text = attendance.aesDate,
+//                                fontSize = 14.sp,
+//                                fontWeight = FontWeight.Bold
+//                            )
+//                            Box{
+//                                Row(
+//                                    modifier = Modifier.fillMaxWidth(),
+//                                    verticalAlignment = Alignment.CenterVertically,
+//                                    horizontalArrangement = Arrangement.spacedBy(10.dp)
+//                                ) {
+//                                    Box(
+//                                        modifier = Modifier
+//                                            .background(
+//                                                Color(0xFF2489FF).copy(0.16f), RoundedCornerShape(5.dp)
+//                                            )
+//                                            .padding(5.dp)
+//                                    ) {
+//                                        Image(
+//                                            painter = painterResource(R.drawable.output_circle_24dp_2489ff_fill0_wght400_grad0_opsz24),
+//                                            contentDescription = "check out",
+//                                            Modifier.rotate(90f)
+//                                        )
+//                                    }
+//                                    Column(
+//                                        modifier = Modifier,
+//                                        verticalArrangement = Arrangement.SpaceBetween
+//                                    ) {
+//                                        Text(
+//                                            text = "06:06:43 PM",
+//                                            fontSize = 12.sp,
+//                                            modifier = Modifier.padding(bottom = 10.dp)
+//                                        )
+//                                        if (attendance.checkIn.statusName == "Miss Check-in") {
+//                                            Text(
+//                                                text = "Miss Check-in",
+//                                                color = Color.Red,
+//                                                fontSize = 10.sp
+//                                            )
+//                                        } else {
+//                                            Text(
+//                                                text = attendance.checkIn.statusName,
+//                                                color = Color(0xFFFFA500),
+//                                                fontSize = 10.sp
+//                                            )
+//                                        }
+//                                    }
+//                                }
+//                            }
+//                        }
                     }
                 }
             }
