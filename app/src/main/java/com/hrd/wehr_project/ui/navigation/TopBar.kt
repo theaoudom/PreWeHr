@@ -52,7 +52,6 @@ fun TopBar(navController: NavHostController){
             }
             IconButton(onClick = {navController.navigate(AllOvertimeScreen.OvertimeDetailScreen.route)}) {
                 Icon(
-
                     painter = painterResource(R.drawable.bell),
                     contentDescription = "notification",
                     modifier = Modifier.size(28.dp),
