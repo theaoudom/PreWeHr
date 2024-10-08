@@ -35,6 +35,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
@@ -46,8 +48,11 @@ import com.hrd.wehr_project.consts.Screen
 
 @Composable
 //@Preview(showBackground = true)
-fun LoginScreen(navController:NavController){
+fun LoginScreen(
+    navController:NavController
+){
 
+    var passwordVisible by remember { mutableStateOf(false) }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var isValid by remember { mutableStateOf(false) }
@@ -150,7 +155,19 @@ fun LoginScreen(navController:NavController){
                         width = 1.dp,
                         color = Color(0xFFE5E7EB),
                         shape = RoundedCornerShape(10.dp)
+                    ),
+                trailingIcon = {
+                    Image(
+                        painter = painterResource(id = if(passwordVisible) R.drawable.eye_show_icon else R.drawable.eye_hide_icon),
+                        contentDescription ="",
+                        modifier = Modifier
+                            .size(24.dp)
+                            .clickable {
+                                passwordVisible = !passwordVisible
+                            }
                     )
+                },
+                visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation()
             )
             Spacer(modifier = Modifier.height(15.dp))
             Row (
