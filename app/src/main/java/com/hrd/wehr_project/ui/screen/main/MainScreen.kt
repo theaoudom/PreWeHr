@@ -12,6 +12,7 @@ import androidx.navigation.compose.rememberNavController
 import com.hrd.wehr_project.ui.navigation.BottomNavigationBar
 import com.hrd.wehr_project.ui.navigation.NavigationHost
 import com.hrd.wehr_project.ui.navigation.TopBar
+import com.hrd.wehr_project.ui.screen.welcome.WelcomeScreen
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -30,6 +31,7 @@ fun MainScreen(){
         Column (
             modifier = Modifier.padding(it)
         ){
+//            WelcomeScreen()
             NavigationHost(navController = navController)
         }
     }
