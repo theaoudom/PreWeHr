@@ -1,5 +1,6 @@
 package com.hrd.wehr_project.consts
 import com.hrd.wehr_project.R
+import java.util.Objects
 
 sealed class Screen(val route: String,val icon: Int? = null,val iconSelected: Int? = null, val title: String? = null) {
     data object Summary : Screen("Summary", R.drawable.summary_icon,R.drawable.summary_icon_selected, "Summary")
@@ -18,3 +19,9 @@ val bottomNavItem = listOf(
     Screen.Leave,
     Screen.Overtime
 )
+
+sealed class AllOvertimeScreen(val route: String) {
+    object RequestOTScreen : AllOvertimeScreen("RequestOTScreen")
+    object OvertimeDetailScreen : AllOvertimeScreen("OvertimeDetailScreen")
+    object EditOvertimeScreen : AllOvertimeScreen("EditOvertimeScreen")
+}

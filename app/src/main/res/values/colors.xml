@@ -7,4 +7,13 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="border_color"> #E5E7EB</color>
+    <color name="smallText"> #5F6368</color>
+    <color name="backgroundTextField_RequestOT"> #F3F8FF</color>
+    <color name="star_color"> #EC221F</color>
+    <color name="pen_color"> #3F61E9</color>
+    <color name="delete_color">#26EC221F</color>
+    <color name="cancel_color"> #E5E7EB </color>
+    <color name="background_dialog"> #FCFDFF</color>
+
 </resources>

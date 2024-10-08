@@ -24,7 +24,7 @@ fun MainScreen(){
             BottomNavigationBar(navController = navController)
         },
         topBar = {
-            TopBar()
+            TopBar(navController = navController)
         }
     ) {
         Column (

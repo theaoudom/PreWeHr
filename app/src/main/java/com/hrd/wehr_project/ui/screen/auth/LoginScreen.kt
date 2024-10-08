@@ -171,7 +171,9 @@ fun LoginScreen(navController:NavController){
             Spacer(modifier = Modifier.height(46.dp))
             // Login Button
             Button(
-                onClick = { /*TODO*/ },
+                onClick = {
+                    navController.navigate(Screen.Main.route)
+                },
                 modifier = Modifier
                     .fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(
@@ -255,7 +257,7 @@ fun LoginScreen(navController:NavController){
                             Log.d("Routeeee", "Current Route: $currentRoute")
                            // Check if navController is not null before navigating
                             if (currentRoute != null) {
-                                navController.navigate(Screen.Main.route)
+                                navController.navigate(Screen.SignUp.route)
                             } else {
                                 Log.e("Routeeee", "Navigation failed: current route is null")
                             }
