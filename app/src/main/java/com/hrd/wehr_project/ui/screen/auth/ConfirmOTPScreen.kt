@@ -20,25 +20,35 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
 @Preview(showBackground = true)
 fun ConfirmOTPScreen(){
 
-    var otpCode by remember { mutableStateOf("") }
+    val otpViewModel : OtpViewModel = viewModel()
+    val otpState = otpViewModel.otpState.value
+    val otpLength = 6
+
+    val focusRequester = List(otpLength) { FocusRequester()}
+    val keyboardController = LocalSoftwareKeyboardController.current
 
     Column(
         modifier = Modifier
@@ -80,15 +90,21 @@ fun ConfirmOTPScreen(){
                 horizontalArrangement = Arrangement.Center,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                repeat(6) {
+                for( i in 0 until otpLength){
                     OutlinedTextField(
-                        value = "", // This would be linked to state holding each digit.
-                        onValueChange = { /* Handle digit input */ },
+                        value = otpState.otpCode[i],
+                        onValueChange = { value ->
+                            otpViewModel.updateOtpCode(index = i, value = value)
+                            if (value.isNotEmpty() && i < otpLength - 1){
+                                focusRequester[i + 1].requestFocus()
+                            }
+                        },
                         modifier = Modifier
                             .width(48.dp)
                             .height(48.dp)
-                            .padding(horizontal = 4.dp),
-//                        singleLine = true,
+                            .padding(horizontal = 4.dp)
+                            .focusRequester(focusRequester = focusRequester[i]),
+                        singleLine = true,
                         textStyle = LocalTextStyle.current.copy(
                             textAlign = TextAlign.Center
                         ),
@@ -136,5 +152,8 @@ fun ConfirmOTPScreen(){
                 }
             }
         }
+    }
+    LaunchedEffect(Unit) {
+        focusRequester[0].requestFocus()
     }
 }
