@@ -59,7 +59,7 @@ fun LeaveScreen(navHostController: NavHostController) {
             leaveType = LeaveType.SpecialLeave,
             leaveDate = "01-11-2024",
             duration = "0.5 day off",
-            reason = "Personal matter"
+            reason = "Personal  matter"
         )
     )
     Column(modifier = Modifier
