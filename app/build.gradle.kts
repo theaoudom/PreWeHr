@@ -62,6 +62,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.ui.test.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -102,6 +103,12 @@ dependencies {
 
 
 
+    // splash screen
+    implementation("androidx.core:core-splashscreen:1.0.1")
+
+    /* Calendar */
+    implementation ("com.maxkeppeler.sheets-compose-dialogs:core:1.2.0")
+    implementation ("com.maxkeppeler.sheets-compose-dialogs:calendar:1.2.0")
 }
 // Allow references to generated code
 kapt {

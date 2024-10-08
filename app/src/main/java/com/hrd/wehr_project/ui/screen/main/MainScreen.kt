@@ -1,30 +1,37 @@
 package com.hrd.wehr_project.ui.screen.main
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.hrd.wehr_project.ui.navigation.BottomNavigationBar
 import com.hrd.wehr_project.ui.navigation.NavigationHost
 import com.hrd.wehr_project.ui.navigation.TopBar
+import com.hrd.wehr_project.ui.screen.welcome.WelcomeScreen
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun MainScreen(navController: NavHostController){
+fun MainScreen(){
+    val navController = rememberNavController()
+    val currentRoute = navController.currentBackStackEntry?.destination?.route
+    Log.d("Routeeee", "Main Route: $currentRoute")
     Scaffold(
         bottomBar = {
             BottomNavigationBar(navController = navController)
         },
         topBar = {
-            TopBar()
+            TopBar(navController = navController)
         }
     ) {
         Column (
             modifier = Modifier.padding(it)
         ){
+//            WelcomeScreen()
             NavigationHost(navController = navController)
         }
     }

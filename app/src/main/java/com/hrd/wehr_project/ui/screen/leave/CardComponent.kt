@@ -64,7 +64,7 @@ fun CardComponent(leaveData: LeaveData,navHostController: NavHostController) {
             ) {
                 // icon calendar
                 Icon(
-                    painter = painterResource(id = R.drawable.calendar),
+                    painter = painterResource(id = R.drawable.calendar2),
                     contentDescription = "calendar icon",
                     Modifier.size(14.dp)
                 )
