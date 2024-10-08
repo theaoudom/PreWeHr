@@ -15,3 +15,9 @@ val bottomNavItem = listOf(
     Screen.Leave,
     Screen.Overtime
 )
+
+sealed class ScreenLeave(val route: String) {
+    data object ScreenRequestLeaveRoute : ScreenLeave("ScreenRequestLeave")
+    data object ScreenLeaveDetailRoute : ScreenLeave("ScreenLeaveDetail")
+    data object ScreenLeaveUpdateRoute : ScreenLeave("ScreenRequestLeave")
+}

@@ -97,6 +97,10 @@ dependencies {
     implementation("androidx.compose.ui:ui:1.4.0")
     implementation("androidx.compose.material:material:1.4.0")
 
+//    /* date */
+//    implementation (libs.kotlinx.datetime)
+
+
 
 }
 // Allow references to generated code

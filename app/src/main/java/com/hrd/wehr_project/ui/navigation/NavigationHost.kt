@@ -5,8 +5,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.hrd.wehr_project.consts.Screen
+import com.hrd.wehr_project.consts.ScreenLeave
 import com.hrd.wehr_project.ui.screen.attendance.AttendanceScreen
 import com.hrd.wehr_project.ui.screen.auth.LoginScreen
+import com.hrd.wehr_project.ui.screen.leave.LeaveRequest
 import com.hrd.wehr_project.ui.screen.leave.LeaveScreen
 import com.hrd.wehr_project.ui.screen.overtime.OvertimeScreen
 import com.hrd.wehr_project.ui.screen.summary.SummaryScreen
@@ -21,7 +23,7 @@ fun NavigationHost(navController: NavHostController) {
             AttendanceScreen()
         }
         composable(Screen.Leave.route){
-            LeaveScreen()
+            LeaveScreen(navController)
         }
         composable(Screen.Overtime.route){
             OvertimeScreen()
@@ -29,5 +31,11 @@ fun NavigationHost(navController: NavHostController) {
         composable(Screen.Login.route){
             LoginScreen()
         }
+
+        /* Leave screen navigation */
+        composable(ScreenLeave.ScreenRequestLeaveRoute.route){
+            LeaveRequest(navController)
+        }
+
     }
 }

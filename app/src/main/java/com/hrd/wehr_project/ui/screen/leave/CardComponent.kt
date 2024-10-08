@@ -1,7 +1,5 @@
 package com.hrd.wehr_project.ui.screen.leave
 
-import android.content.res.Resources
-import android.graphics.drawable.Icon
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -18,38 +16,39 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
-import androidx.compose.material.icons.filled.KeyboardArrowRight
-import androidx.compose.material3.Button
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.SelectableChipColors
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.hrd.wehr_project.R
+import com.hrd.wehr_project.consts.ScreenLeave
+
 @Composable
-fun CardComponent(leaveData: LeaveData) {
+fun CardComponent(leaveData: LeaveData,navHostController: NavHostController) {
 
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .padding(0.dp, 5.dp)
             .border(
-                border = BorderStroke(width = 1.dp, color = colorResource(id = R.color.border_color)),
+                border = BorderStroke(
+                    width = 1.dp,
+                    color = colorResource(id = R.color.border_color)
+                ),
                 shape = RoundedCornerShape(10.dp)
             )
-            .background(colorResource(id = R.color.white),shape = RoundedCornerShape(10.dp))
+            .background(colorResource(id = R.color.white), shape = RoundedCornerShape(10.dp))
+            .clickable { navHostController.navigate(ScreenLeave.ScreenRequestLeaveRoute.route) }
         
     )
     {
@@ -67,7 +66,7 @@ fun CardComponent(leaveData: LeaveData) {
                 Icon(
                     painter = painterResource(id = R.drawable.calendar),
                     contentDescription = "calendar icon",
-                    Modifier.size(13.dp)
+                    Modifier.size(14.dp)
                 )
                 // date
                 Text(leaveData.leaveDate, fontWeight = FontWeight.Medium, fontSize = 13.sp)
@@ -75,7 +74,7 @@ fun CardComponent(leaveData: LeaveData) {
                 Icon(
                     painter = painterResource(id = R.drawable.ellipse),
                     contentDescription = "calendar icon",
-                    Modifier.size(6.dp),
+                    Modifier.size(7.dp),
                     tint = colorResource(
                         id = R.color.circle_color
                     )
@@ -97,7 +96,9 @@ fun CardComponent(leaveData: LeaveData) {
                 Spacer(modifier = Modifier.weight(1f))
 
 
-                Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, contentDescription = "ArrowRight icon")
+                Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, contentDescription = "ArrowRight icon", tint = colorResource(
+                    id = R.color.text_color
+                ))
             }
         }
     }

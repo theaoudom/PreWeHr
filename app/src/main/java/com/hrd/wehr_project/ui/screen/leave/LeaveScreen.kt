@@ -19,15 +19,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.hrd.wehr_project.R
-
 @SuppressLint("Range")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LeaveScreen() {
+fun LeaveScreen(navHostController: NavHostController) {
     var data = listOf(
         LeaveData(
             status = Status.Request,
@@ -115,7 +115,7 @@ fun LeaveScreen() {
 
         Text(
             text = "My Leaves",
-            Modifier.padding(top = 15.dp),
+            Modifier.padding(top = 15.dp, bottom = 5.dp),
             fontWeight = FontWeight.Bold,
             fontSize = 15.sp
         )
@@ -126,7 +126,7 @@ fun LeaveScreen() {
         ) {
             items(data.size)
             {
-                CardComponent(leaveData=data[it])
+                CardComponent(leaveData=data[it],navHostController)
             }
 
         }

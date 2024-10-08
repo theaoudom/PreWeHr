@@ -25,4 +25,5 @@
     <color name="search_text_color">#4B5563</color>
     <color name="button_delete_color">#EC221F</color>
     <color name="request_leave_text_color">#3F61E9</color>
+    <color name="leave_detail_text_color">#090920</color>
 </resources>

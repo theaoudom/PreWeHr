@@ -18,6 +18,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.hrd.wehr_project.R
 @Composable
 fun SearchBar(
     modifier: Modifier = Modifier,
@@ -36,7 +37,7 @@ fun SearchBar(
                 "Search here",
                 fontWeight = FontWeight.Normal,
                 fontSize = 14.sp,
-              // color = colorResource(id = R.color.search_text_color) // Ensure the placeholder is visible
+               color = colorResource(id = R.color.search_text_color) // Ensure the placeholder is visible
             )
         },
         trailingIcon = {
@@ -48,10 +49,10 @@ fun SearchBar(
         modifier = Modifier
             .height(50.dp) // Set fixed height
         , colors = TextFieldDefaults.colors(
-//            unfocusedContainerColor = colorResource(id = R.color.search_bg_color),
-//            focusedIndicatorColor = colorResource(id = R.color.search_border_color),
-//            focusedContainerColor = colorResource(id = R.color.search_bg_color),
-//            unfocusedIndicatorColor = colorResource(id = R.color.search_border_color)
+            unfocusedContainerColor = colorResource(id = R.color.search_bg_color),
+            focusedIndicatorColor = colorResource(id = R.color.search_border_color),
+            focusedContainerColor = colorResource(id = R.color.search_bg_color),
+            unfocusedIndicatorColor = colorResource(id = R.color.search_border_color)
         ),
         shape = RoundedCornerShape(15.dp),
     )
