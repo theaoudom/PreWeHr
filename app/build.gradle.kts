@@ -94,6 +94,9 @@ dependencies {
 
     // splash screen
     implementation("androidx.core:core-splashscreen:1.0.1")
+    implementation ("androidx.compose.material3:material3:1.3.0")
+    implementation ("androidx.compose.material:material:1.7.3")
+
 }
 // Allow references to generated code
 kapt {

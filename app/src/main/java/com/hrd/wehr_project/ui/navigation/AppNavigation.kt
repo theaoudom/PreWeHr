@@ -18,7 +18,7 @@ fun AppNavigation(navController: NavHostController, isAuthenticated: Boolean) {
         composable(Screen.Login.route) { LoginScreen(navController) }
         composable(Screen.SignUp.route) { SignUpScreen(navController) }
         composable(Screen.ConfirmOTP.route) { ConfirmOTPScreen() }
-        composable(Screen.Welcome.route){ WelcomeScreen()}
+        composable(Screen.Welcome.route){ WelcomeScreen(navController)}
 
         // Main Screens
         composable(Screen.Main.route) { MainScreen() }
