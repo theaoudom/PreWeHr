@@ -92,6 +92,8 @@ dependencies {
     /* navigation */
     implementation("androidx.navigation:navigation-compose:$2.7.7")
 
+    // splash screen
+    implementation("androidx.core:core-splashscreen:1.0.1")
 }
 // Allow references to generated code
 kapt {

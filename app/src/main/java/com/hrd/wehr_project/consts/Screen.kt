@@ -11,6 +11,7 @@ sealed class Screen(val route: String,val icon: Int? = null,val iconSelected: In
     data object SignUp : Screen("SignUp")
     data object ConfirmOTP : Screen("ConfirmOTP")
     data object Main : Screen("Main")
+    data object Welcome:Screen("WelcomeScreen")
 }
 val bottomNavItem = listOf(
     Screen.Summary,
